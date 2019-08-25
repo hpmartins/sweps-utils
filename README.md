@@ -30,9 +30,9 @@ overlapc = 100
 # selects all .tif files in the folder
 files = glob.glob(r'{}\*.tif'.format(imgdir))
 images = []
-for file in files:
+for filename in files:
     # converts from uint16 to float
-    img = Image.open(file).convert('F')
+    img = Image.open(filename).convert('F')
     
     # this filters by maximum value in a 3px window
     img = img.filter(ImageFilter.MaxFilter(3))
