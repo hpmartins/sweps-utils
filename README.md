@@ -1,5 +1,4 @@
-# sweps-utils
-Code utilities for SWEPS group
+# Code utilities for SWEPS group
 
 ## Image stitching 
 
