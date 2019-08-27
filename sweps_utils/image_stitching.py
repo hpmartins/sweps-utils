@@ -44,14 +44,11 @@ def stitch(images, ncols, nrows, overlapr, overlapc):
         
         # Loop over all pixels that should be pasted onto the final
         # image. If the pixel in the final image has already been
-        # used (mask = 1), its value is set to the average of current+new.
+        # used (mask = 1), its value is set to the (current+new)/2.
         # Otherwise, it is set to the new pixel value and marks the mask.
         for row in rows_to_paste:
             for col in cols_to_paste:
-                if mask_total[row][col]:
-                    new_image[row][col] = (new_image[row][col] + img_list[img_index][row - row_paste][col - col_paste])/2
-                else:
-                    new_image[row][col] = img_list[img_index][row - row_paste][col - col_paste]
-                    mask_total[row][col] = 1
-                    
-    return Image.fromarray(np.asarray(new_image)).convert('F')
+                new_image[row][col] += img_list[img_index][row - row_paste][col - col_paste]
+                mask_total[row][col] += 1
+    
+    return Image.fromarray(np.array(new_image)/np.array(mask_total)).convert('F')
