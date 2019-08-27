@@ -1,5 +1,11 @@
 # Code utilities for SWEPS group
 
+## Installation
+
+```bash
+$ pip install git+https://github.com/hpmartins/sweps-utils
+```
+
 ## Image stitching 
 
 Example usage for image stitching:
