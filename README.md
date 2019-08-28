@@ -40,15 +40,12 @@ for filename in files:
     # converts from uint16 to float
     img = Image.open(filename).convert('F')
     
-    # this filters by maximum value in a 3px window
-    img = img.filter(ImageFilter.MaxFilter(3))
-    
     # resize image if wanted to process faster
     if nsize < img.size[0]:
         img = img.resize((nsize, nsize))
         
     # cropping: (left, upper, left+width, upper+height)
-    img = img.crop((0, 0, nsize, nsize))
+    # img = img.crop((0, 0, nsize, nsize))
 
     images.append(img)
 
